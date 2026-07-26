@@ -1,16 +1,20 @@
-# React + Vite
+# 🌤️ WeatherNow - Real-time Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A clean and responsive weather app built with React + CSS using WeatherAPI.com. 
+Get current weather, 3-day forecast and location-based weather instantly.
 
-Currently, two official plugins are available:
+Live: https://anuragfrontend-dev.github.io/weather-app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
+- **Current Weather**: Temperature, feels like, humidity, wind
+- **3-Day Forecast**: Daily min/max temp + condition
+- **City Search**: Search weather for any city worldwide  
+- **Weather Icons**: Dynamic icons from WeatherAPI
+- **Responsive Design**: mobile-friendly UI with CSS
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🛠️ Tech Stack
+- **Frontend**: React, 
+- **API**: [WeatherAPI.com](https://www.weatherapi.com/)
+- **HTTP Client**: Axios
+- **State Management**: React useState, useEffect
+- **Icons**: WeatherAPI condition icon
