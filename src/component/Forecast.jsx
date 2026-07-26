@@ -5,14 +5,14 @@ import './Forecast.css';
 
 export function Forecast() {
     const [forecast, setForecast] = useState(null);
-    const { city } = useParams();
+    const { city,latlon } = useParams();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getForecast = async () => {
             try {
                 const key = import.meta.env.VITE_API_KEY;
-                const res = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=3`);
+                const res = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${encodeURIComponent(latlon)}&days=3`);
                 setForecast(res.data);
             } catch (err) {
                 console.log("API Error:", err);
