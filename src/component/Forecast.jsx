@@ -8,21 +8,22 @@ export function Forecast() {
     const { city,latlon } = useParams();
     const [loading, setLoading] = useState(true);
 
+    const getForecast = async () => {
+        try {
+            const key = import.meta.env.VITE_API_KEY;
+            const res = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${encodeURIComponent(latlon)}&days=3`);
+            setForecast(res.data);
+        } catch (err) {
+            console.log("API Error:", err);
+            setForecast(null);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const getForecast = async () => {
-            try {
-                const key = import.meta.env.VITE_API_KEY;
-                const res = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${encodeURIComponent(latlon)}&days=3`);
-                setForecast(res.data);
-            } catch (err) {
-                console.log("API Error:", err);
-                setForecast(null);
-            } finally {
-                setLoading(false);
-            }
-        };
         getForecast();
-    }, [city]);
+    }, [latlon]);
 
     if (loading) return <h2 className='errorContainer'>Loading...</h2>;
 
@@ -45,7 +46,7 @@ export function Forecast() {
                     <div className="forecast-item" key={index}>
                         <p>{new Date(day.date).toLocaleDateString('en-US', {weekday:'short'})}</p>
                         <img src={day.day.condition.icon} alt={day.day.condition.text} />
-                        <p>{day.day.maxtemp_c}° / {day.day.mintemp_c}°</p>
+                        <p>{day.day.maxtemp_c}°C / {day.day.mintemp_c}°C</p>
                         <p>{day.day.condition.text}</p>
                     </div>
                 ))}
